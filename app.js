@@ -45,7 +45,30 @@ mongoose.connect(
 require('./express-sessions')(app)
 
 // Routes
-
+//Home
+app.use('/', (req, res) => {
+  res.send('This is the Home Page')
+})
+//Auth
+app.use('/', (req, res) => {
+  res.send('This is the auth Page')
+})
+//Bookings
+app.use('/', (req, res) => {
+  res.send('This is the  Page')
+})
+//houses
+app.use('/', (req, res) => {
+  res.send('This is the Home Page')
+})
+//profile
+app.use('/', (req, res) => {
+  res.send('This is the Home Page')
+})
+//reviews
+app.use('/', (req, res) => {
+  res.send('This is the Home Page')
+})
 // ::::
 // Create your routes here
 // ::::
