@@ -2,19 +2,19 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  res.send('fuck')
+  res.render('houses/list')
 })
 
 router.get('/create', (req, res) => {
-  res.send('this')
+  res.send('kjbgh')
 })
 
 router.get('/:id', (req, res) => {
-  res.send('bull')
+  res.send('khgiu')
 })
 
 router.get('/:id/edit', (req, res) => {
-  res.send('shit')
+  res.send('jhiugi')
 })
 
 router.post('/', (req, res) => {
@@ -22,10 +22,10 @@ router.post('/', (req, res) => {
 })
 
 router.patch('/:id', (req, res) => {
-  res.send('bull')
+  res.send('hjg')
 })
 
 router.delete('/:id', (req, res) => {
-  res.send('twat')
+  res.send('hjvgyuf')
 })
 module.exports = router

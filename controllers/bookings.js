@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 router.post('/', (req, res) => {
-  res.send('fuuuuuucccckkkkk')
+  console.log('yuftgfvh')
 })
 
 module.exports = router

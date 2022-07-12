@@ -2,11 +2,11 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/login', (req, res) => {
-  res.send('hello')
+  res.render('login')
 })
 
 router.get('/signup', (req, res) => {
-  res.send('hello')
+  res.render('signup')
 })
 
 router.post('/login', (req, res) => {
