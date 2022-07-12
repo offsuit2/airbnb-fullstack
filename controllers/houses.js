@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/create', (req, res) => {
-  res.send('kjbgh')
+  res.render('houses/create')
 })
 
 router.get('/:id', (req, res) => {
@@ -14,7 +14,7 @@ router.get('/:id', (req, res) => {
 })
 
 router.get('/:id/edit', (req, res) => {
-  res.send('jhiugi')
+  res.render('houses/edit')
 })
 
 router.post('/', (req, res) => {
