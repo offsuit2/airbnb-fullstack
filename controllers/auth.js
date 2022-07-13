@@ -16,7 +16,12 @@ router.post('/login', (req, res) => {
 
 router.post('/signup', async (req, res) => {
   let user = await Users.create(req.body)
-  console.log('Hello')
+  req.login(user, err => {
+    if (err) {
+      throw err
+    }
+    res.redirect('/houses/list')
+  })
 })
 
 router.get('/logout', (req, res) => {
