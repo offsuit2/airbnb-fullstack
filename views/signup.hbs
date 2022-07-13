@@ -1,6 +1,9 @@
 <div class="img-bg">
       <div class="main-box ">
         <form
+				  action="/auth/signup"
+					method="post"
+					name="Signup"
           class="welcome position-absolute top-50 start-50 translate-middle "
         >
           <!-- logo -->
@@ -16,12 +19,14 @@
 
               <small>Your Full Name</small>
               <input
+							  name="name"
                 class="form-control"
                 type="text"
                 aria-label="default input example"
               />
               <small>Profile Picture</small>
               <input
+							name="avatar"
                 class="form-control"
                 type="text"
                 placeholder="http://..."
@@ -32,17 +37,19 @@
                   >Email</label
                 >
                 <input
+								name="email"
                   type="email"
                   class="form-control"
                   id="exampleFormControlInput1"
                 />
                 <label for="inputPassword" class="">Password</label>
                 <input
+								name="password"
                   type="password"
                   class="form-control"
                   id="inputPassword"
                 />
-                <button type="button" class="btn btn-success my-2">
+                <button class="btn btn-success my-2">
                   Signup
                 </button>
                 <div>
