@@ -15,13 +15,25 @@ router.post('/login', (req, res) => {
 })
 
 router.post('/signup', async (req, res) => {
-  let user = await Users.create(req.body)
-  req.login(user, err => {
-    if (err) {
-      throw err
-    }
-    res.redirect('/houses/list')
-  })
+  // look for user with that email
+  let email = await Users.find({ email: req.body.email })
+  console.log(email)
+
+  // if found
+  if (email) {
+    // send some error
+  } else {
+    // create account
+    let user = await Users.create(req.body)
+    // login
+    req.login(user, err => {
+      if (err) {
+        throw err
+      }
+      res.redirect('/houses/list')
+    })
+    // redirect to houses page
+  }
 })
 
 router.get('/logout', (req, res) => {
