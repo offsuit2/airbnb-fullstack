@@ -1,6 +1,9 @@
 <div class="img-bg">
       <div class="main-box ">
         <form
+				  action="/auth/login"
+					method="post"
+					name="login"
           class="welcome position-absolute top-50 start-50 translate-middle "
         >
           <!-- logo -->
@@ -9,8 +12,7 @@
               <div class="text-center">
                 <img
                   src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1642399114/portal/web%20development%20beginners/05%20Project%20Airbnb/assets/logo-airbnb.png"
-                  alt=""
-                />
+                  alt=""  />
               </div>
               <!-- form info -->
 
@@ -19,17 +21,19 @@
                   >Email</label
                 >
                 <input
+								  name="email"
                   type="email"
                   class="form-control"
                   id="exampleFormControlInput1"
                 />
                 <label for="inputPassword" class="">Password</label>
                 <input
+								  name="password"
                   type="password"
                   class="form-control"
                   id="inputPassword"
                 />
-                <button type="button" class="btn btn-success my-2">
+                <button class="btn btn-success my-2">
                   Login
                 </button>
                 <div>

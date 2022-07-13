@@ -10,7 +10,11 @@ router.get('/signup', (req, res) => {
   res.render('signup')
 })
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
+  //checking user email and password
+  let email = await Users.find({ email: req.body.email })
+  let password = await Users.find({ password: req.body.password })
+  console.log(email, password)
   res.send('hello')
 })
 
