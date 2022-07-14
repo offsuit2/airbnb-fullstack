@@ -1,20 +1,21 @@
 
 <div class="container mt-4">
       <h1>List a House</h1>
-      <form class="">
+      <form action="/houses" method="post" name="house">
         <small>Short Title</small>
-        <input class="form-control mb-2" type="text" />
+        <input name="title" class="form-control mb-2" type="text" />
         <small>Description</small>
         <label for="exampleFormControlTextarea1" class="form-label mb-2"></label
         ><textarea
+        	name="description"
           class="form-control mb-2"
           id="exampleFormControlTextarea1"
           rows="3"
         ></textarea>
         <small>Number of Rooms</small>
-        <input type="number" class="form-control mb-2" />
+        <input name="rooms" type="number" class="form-control mb-2" />
         <small>Location</small>
-        <select type="number" class="form-select mb-2">
+        <select name="location" type="number" class="form-select mb-2">
           <option selected></option>
           <option value="1">Koh Phangan</option>
           <option value="2">Koh Samui</option>
@@ -27,6 +28,7 @@
         <div class="input-group mb-3">
           <span class="input-group-text">$</span>
           <input
+					  name="price"
             type="number"
             class="form-control"
             aria-label="Amount (to the nearest dollar)"
@@ -35,6 +37,7 @@
         <small>Add Photos(up to 9)</small>
         <div class="mb-1">
           <input
+					name="photos"
             class="form-control"
             type="text"
             placeholder="http://..."
@@ -43,6 +46,7 @@
         </div>
         <div class="mb-1">
           <input
+					name="photos"
             class="form-control"
             type="text"
             placeholder="http://..."
@@ -51,6 +55,7 @@
         </div>
         <div class="mb-1">
           <input
+					name="photos"
             class="form-control"
             type="text"
             placeholder="http://..."
@@ -59,6 +64,7 @@
         </div>
         <div class="mb-1">
           <input
+					name="photos"
             class="form-control"
             type="text"
             placeholder="http://..."
@@ -67,6 +73,7 @@
         </div>
         <div class="mb-1">
           <input
+					name="photos"
             class="form-control"
             type="text"
             placeholder="http://..."
@@ -75,6 +82,7 @@
         </div>
         <div class="mb-1">
           <input
+					name="photos"
             class="form-control"
             type="text"
             placeholder="http://..."
@@ -83,6 +91,7 @@
         </div>
         <div class="mb-1">
           <input
+					name="photos"
             class="form-control"
             type="text"
             placeholder="http://..."
@@ -91,6 +100,7 @@
         </div>
         <div class="mb-1">
           <input
+					name="photos"
             class="form-control"
             type="text"
             placeholder="http://..."
@@ -99,12 +109,13 @@
         </div>
         <div class="mb-">
           <input
+					name="photos"
             class="form-control"
             type="text"
             placeholder="http://..."
             aria-label="default input example"
           />
         </div>
-        <button type="button" class="btn btn-success mb-5">Submit</button>
+        <button class="btn btn-success mb-5">Submit</button>
       </form>
     </div>

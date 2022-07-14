@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Users = require('../models/users')
+const Houses = require('../models/houses')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -13,18 +14,22 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/create', (req, res) => {
-  let user = req.user
-  if (req.isAuthenticated()) {
-  } else {
-    res.redirect('../auth/login')
+router.get('/create', async (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      let user = req.user
+      res.render('houses/create')
+    } else {
+      res.redirect('/auth/login')
+    }
+  } catch (err) {
+    next(err)
   }
-  res.render('houses/create', { user })
 })
 
 router.get('/:id', (req, res) => {
   let user = req.user
-  res.send('khgiu', { user })
+  res.send('hello', { user })
 })
 
 router.get('/:id/edit', (req, res) => {
@@ -36,12 +41,15 @@ router.get('/:id/edit', (req, res) => {
   res.render('houses/edit', { user })
 })
 
-router.post('/', (req, res) => {
-  if (req.isAuthenticated()) {
-  } else {
-    res.redirect('../auth/login')
+router.post('/', async (req, res, next) => {
+  try {
+    // console.log(req.body)
+    req.body.host = req.user._id
+    let house = await Houses.create(req.body)
+  } catch (err) {
+    next(err)
   }
-  res.send('hello')
+  // res.send('hello', { house })
 })
 
 router.patch('/:id', (req, res) => {
