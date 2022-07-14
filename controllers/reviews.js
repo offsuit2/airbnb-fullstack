@@ -2,7 +2,10 @@ const express = require('express')
 const router = express.Router()
 
 router.post('/', (req, res) => {
-  res.send('jhffrd')
+  if (req.isAuthenticated()) {
+  } else {
+    res.redirect('../auth/login')
+  }
 })
 
 module.exports = router

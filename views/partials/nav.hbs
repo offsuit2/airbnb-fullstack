@@ -10,17 +10,28 @@
 					/>
 				</div>
 				<div class="col text-end">
+
+					{{#if user}}
+					<!-- user login -->
 					<button type="button" class="btn btn-outline-secondary">
 						<img
 							src="https://randomuser.me/api/portraits/men/11.jpg"
 							alt=""
 							class="rounded-circle avatar"
 						/>
-						David
+						{{user.name}}
 					</button>
 					<button type="button" class="btn btn-outline-secondary">
 						logout
 					</button>
+
+					{{else}}
+					<!--if user is not login-->
+					<button type="button" class="btn btn-outline-secondary">
+						login
+					</button>
+					{{/if}}
+
 				</div>
 			</div>
 		</div>
