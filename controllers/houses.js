@@ -14,23 +14,26 @@ router.get('/', async (req, res, next) => {
 })
 
 router.get('/create', (req, res) => {
+  let user = req.user
   if (req.isAuthenticated()) {
   } else {
     res.redirect('../auth/login')
   }
-  res.render('houses/create')
+  res.render('houses/create', { user })
 })
 
 router.get('/:id', (req, res) => {
-  res.send('khgiu')
+  let user = req.user
+  res.send('khgiu', { user })
 })
 
 router.get('/:id/edit', (req, res) => {
+  let user = req.user
   if (req.isAuthenticated()) {
   } else {
     res.redirect('../auth/login')
   }
-  res.render('houses/edit')
+  res.render('houses/edit', { user })
 })
 
 router.post('/', (req, res) => {

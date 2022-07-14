@@ -3,11 +3,12 @@ const router = express.Router()
 const Users = require('../models/users')
 
 router.get('/login', (req, res) => {
-  res.render('login')
+  let user = req.user
+  res.render('login', { user })
 })
 
 router.get('/signup', (req, res) => {
-  res.render('signup')
+  res.render('signup', { user })
 })
 
 router.post('/login', async (req, res, next) => {
@@ -66,7 +67,7 @@ router.get('/logout', async (req, res, next) => {
     }
     res.clearCookie('connect.sid')
     // continue coding here
+    res.redirect('/auth/login')
   })
-  res.redirect('/auth/login')
 })
 module.exports = router

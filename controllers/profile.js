@@ -5,7 +5,7 @@ router.get('/', (req, res) => {
   if (req.isAuthenticated()) {
   } else {
   }
-  res.render('profile')
+  res.render('profile', { user })
 })
 
 router.patch('/', (req, res) => {

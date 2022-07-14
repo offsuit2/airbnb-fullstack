@@ -15,21 +15,18 @@
 					<!-- user login -->
 					<button type="button" class="btn btn-outline-secondary">
 						<img
-							src="https://randomuser.me/api/portraits/men/11.jpg"
+							src="{{user.avatar}}"
 							alt=""
 							class="rounded-circle avatar"
 						/>
 						{{user.name}}
 					</button>
-					<button type="button" class="btn btn-outline-secondary">
-						logout
-					</button>
+
+          <a href="/auth/logout" class="btn btn-outline-secondary">logout</a>
 
 					{{else}}
 					<!--if user is not login-->
-					<button type="button" class="btn btn-outline-secondary">
-						login
-					</button>
+					<a href="/auth/login" class="btn btn-outline-secondary">login</a>
 					{{/if}}
 
 				</div>
