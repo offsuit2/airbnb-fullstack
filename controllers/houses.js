@@ -7,8 +7,10 @@ router.get('/', async (req, res, next) => {
   try {
     //user
     let user = req.user
-    //if theres a user
-    res.render('houses/list', { user })
+    //houses
+    let houses = await Houses.find({})
+    console.log(houses)
+    res.render('houses/list', { user, houses })
   } catch {
     next(err)
   }
@@ -27,9 +29,15 @@ router.get('/create', async (req, res, next) => {
   }
 })
 
-router.get('/:id', (req, res) => {
-  let user = req.user
-  res.send('hello', { user })
+router.get('/:id', async (req, res, next) => {
+  try {
+    // find the house
+    let house = await Houses.findOne({ _id: req.params.id })
+    // put the house in the template and render it
+    res.render('houses/one', { house, user: req.user })
+  } catch (err) {
+    throw err
+  }
 })
 
 router.get('/:id/edit', (req, res) => {
@@ -43,9 +51,11 @@ router.get('/:id/edit', (req, res) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    // console.log(req.body)
+    // host
     req.body.host = req.user._id
     let house = await Houses.create(req.body)
+    res.redirect('/houses/' + house._id)
+    //redirct to /:id with obj:id
   } catch (err) {
     next(err)
   }

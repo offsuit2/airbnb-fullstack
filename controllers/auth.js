@@ -18,7 +18,6 @@ router.post('/login', async (req, res, next) => {
       email: req.body.email,
       password: req.body.password
     })
-    console.log(user)
     if (user) {
       req.login(user, err => {
         if (err) {

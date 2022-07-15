@@ -1,80 +1,29 @@
-
+{{> nav}}
 <div class="pictures ">
       <div class="container">
         <div class="row">
           <div class="col">
             <img
-              src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+              src="{{house.photos.[0]}}"
               alt=""
               class="img-fluid"
             />
           </div>
+					<!-- photos on the right -->
           <div class="col">
             <div class="container p-4">
               <div class="row row-cols-3">
+								<!-- photos -->
+								{{#each house.photos as |photo|}}
                 <div class="col mb-1">
                   <img
-                    src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+                    src="{{photo}}"
                     alt=""
                     class="img-fluid"
                   />
                 </div>
-                <div class="col mb-3">
-                  <img
-                    src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_02.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </div>
-                <div class="col mb-3">
-                  <img
-                    src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_03.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </div>
-                <div class="col mb-3">
-                  <img
-                    src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_04.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </div>
-                <div class="col mb-3">
-                  <img
-                    src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_05.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </div>
-                <div class="col mb-3">
-                  <img
-                    src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_05.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </div>
-                <div class="col">
-                  <img
-                    src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_07.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </div>
-                <div class="col">
-                  <img
-                    src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_08.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </div>
-                <div class="col">
-                  <img
-                    src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_09.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </div>
+								{{/each}}
+
               </div>
             </div>
           </div>
@@ -89,12 +38,12 @@
           <div class="col-8">
             <div class="row row-cols-1">
               <div class="col">
-                <h1>Luxury Villa in Chaweng</h1>
+                <h1>{{house.title}}</h1>
                 <small
                   ><i class="fa-solid fa-location-dot pe-1"></i>Koh Samui</small
                 >
                 <small
-                  ><i class="fa-regular fa-circle-dot pe-1"></i>4 Rooms</small
+                  ><i class="fa-regular fa-circle-dot pe-1"></i>{{house.rooms}} rooms</small
                 >
               </div>
               <div class="col">
@@ -102,7 +51,7 @@
                   <div class="row row-cols-3">
                     <div class="col-2">
                       <img
-                        src="https://randomuser.me/api/portraits/men/11.jpg"
+                        src="{{user.avatar}}"
                         alt=""
                         class="rounded-circle text-start avatarlrg"
                       />
@@ -112,22 +61,14 @@
                         <div class="row">
                           <div class="col-12">
                             <small>Hosted By</small>
-                            <h6>David Crissi</h6>
+                            <h6>{{user.name}}</h6>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Assumenda necessitatibus itaque sapiente dolorum quae laborum
-                  velit doloremque labore magnam accusantium non quasi fugit qui
-                  praesentium reiciendis, earum neque modi odio, voluptates!
-                  Aliquid quas reprehenderit error ex recusandae magni molestiae
-                  accusamus ratione reiciendis totam cumque quisquam deserunt
-                  neque, natus aut.
-                </p>
+                <p>{{house.description}}</p>
               </div>
               <div class="col">
                 <h2>0 Reveiws</h2>
@@ -158,7 +99,7 @@
           <div class="col-4">
             <div class="card">
               <div class="card-body">
-                <h3 class="card-title mb-1">$350/Night</h3>
+                <h3 class="card-title mb-1">${{house.price}}</h3>
                 <small>0 Reveiws</small>
                 <form action="">
                   <textarea
