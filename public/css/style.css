@@ -22,3 +22,11 @@
 .main-box {
   width: 1000px;
 }
+a {
+  text-decoration: none;
+  color: #343a40;
+}
+a:hover {
+  text-decoration: none;
+  color: #343a40;
+}

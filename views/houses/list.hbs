@@ -3,70 +3,81 @@
 
 <div class="filters bg-light p-2">
       <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="input-group flex-nowrap">
-              <span class="input-group-text" id="addon-wrapping"
-                ><i class="fa-solid fa-location-dot"></i
-              ></span>
-              <select class="form-select" aria-label="Default select example">
-                <option selected></option>
-                <option value="1">Koh Phangan</option>
-                <option value="2">Koh Samui</option>
-                <option value="3">Bali</option>
-              </select>
-            </div>
-          </div>
-          <div class="col">
-            <div class="input-group flex-nowrap">
-              <span class="input-group-text" id="addon-wrapping"
-                ><i class="fa-solid fa-house"></i
-              ></span>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="addon-wrapping"
-              />
-            </div>
-          </div>
-          <div class="col">
-            <div class="input-group mb-3">
-              <span class="input-group-text">$</span>
-              <input
-                type="number"
-                class="form-control"
-                aria-label="Amount (to the nearest dollar)"
-              />
-            </div>
-          </div>
-          <div class="col">
-            <div class="input-group flex-nowrap">
-              <span class="input-group-text" id="addon-wrapping"
-                ><i class="fa-solid fa-circle-dot"></i
-              ></span>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="addon-wrapping"
-              />
-            </div>
-          </div>
-          <div class="col">
-            <select class="form-select" aria- label="Default select example">
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="col">
-            <button type="button" class="btn btn-success">Success</button>
-          </div>
-        </div>
+        <form class="" action="/houses" method="get">
+					<div class="row">
+	          <div class="col">
+							<!-- location filter -->
+	            <div class="input-group flex-nowrap">
+	              <span class="input-group-text" id="addon-wrapping"
+	                ><i class="fa-solid fa-location-dot"></i
+	              ></span>
+								<select name="location" type="number" class="form-select">
+				          <option selected></option>
+				          <option value="Koh Phangan">Koh Phangan</option>
+				          <option value="Koh Samui">Koh Samui</option>
+				          <option value="Bali">Bali</option>
+				          <option value="Denver">Denver</option>
+				          <option value="Las Vegas">Las Vegas</option>
+				          <option value="Mexico City">Mexico City</option>
+				        </select>
+	            </div>
+	          </div>
+						<!-- Number of Rooms -->
+	          <div class="col">
+	            <div class="input-group flex-nowrap">
+	              <span class="input-group-text"
+								 id="addon-wrapping"
+	                ><i class="fa-solid fa-house"></i
+	              ></span>
+								<select class="form-select" aria- label="Default select example" name="rooms">
+									<option value="0">Any</option>
+		              <option value="1">One</option>
+		              <option value="2">Two</option>
+		              <option value="3">Three</option>
+									<option value="4">Four</option>
+									<option value="5">Five</option>
+		            </select>
+	            </div>
+	          </div>
+						<!-- price filter -->
+	          <div class="col">
+	            <div class="input-group mb-3">
+	              <span class="input-group-text">$</span>
+	              <input
+								  name="price"
+	                type="number"
+	                class="form-control"
+	                aria-label="Amount (to the nearest dollar)"
+	              />
+	            </div>
+	          </div>
+						<!-- Sort filter -->
+	          <div class="col">
+	            <div class="input-group flex-nowrap">
+	              <span class="input-group-text" id="addon-wrapping"
+	                ><i class="fa-solid fa-circle-dot"></i
+	              ></span>
+								<select class="form-select" aria- label="Default select example" name="sort">
+		              <option value="1">Lowest to Highest</option>
+		              <option value="2">Highest to Lowest</option>
+		            </select>
+	            </div>
+	          </div>
+						<!-- property name -->
+	          <div class="col">
+							<input
+								type="text"
+								placeholder="House name"
+								class="form-control"
+								name="title"
+								aria-describedby="addon-wrapping"
+							/>
+	          </div>
+	          <div class="col">
+	            <button class="btn btn-success">Filter</button>
+	          </div>
+	        </div>
+        </form>
       </div>
     </div>
 
@@ -76,25 +87,28 @@
         <div class="row row-cols-4">
 					<!-- start h -->
 					{{#each houses as |house|}}
-          <div class=" col">
-            <div class="card">
+          <div class="col">
+            <div class="card my-3">
               <img
                 src="{{house.photos.[0]}}"
                 class="card-img-top"
-                alt="..."
+                alt="house 1 picture 1"
               />
               <div class="card-body">
-                <label for="">{{house.location}}</label>
-                <span>4 rooms</span>
-                <h5 class="card-title">{{house.tiltle}}</h5>
-                <span>3 Reveiws</span>
-                <span class="float-end">${{house.price}}/night</span>
+                <span>{{house.location}} . {{house.rooms}} Rooms</span>
+                <h5 class="card-title">
+                  <a href="/houses/{{house._id}}" class="stretched-link">{{house.title}}</a>
+                </h5>
+                <div class="row">
+                  <div class="col">3 reviews</div>
+                  <div class="col text-end">${{house.price}}/night</div>
+                </div>
               </div>
             </div>
           </div>
 					{{/each}}
 					<!-- end h -->
-					
+
           </div>
         </div>
       </div>

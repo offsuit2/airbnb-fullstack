@@ -7,11 +7,37 @@ router.get('/', async (req, res, next) => {
   try {
     //user
     let user = req.user
+    //filter query
+    // 1. Start with an empty cup
+    let ask = {}
+    //location
+    if (req.query.location != undefined && req.query.location != '') {
+      ask.location = req.query.location
+    }
+    console.log(req.query)
+    //rooms
+    if (req.query.rooms != 0 && req.query.rooms != '') {
+      ask.rooms = req.query.rooms
+    }
+    //price
+    if (req.query.price != undefined && req.query.price != '') {
+      ask.price = req.query.price
+    }
+    //title
+    if (req.query.price != undefined && req.query.title != '') {
+      ask.title = req.query.title
+    }
+    //sort
+    let price = req.query.sort
+    if (price == 1) {
+      price = 'price'
+    } else {
+      price = '-price'
+    }
     //houses
-    let houses = await Houses.find({})
-    console.log(houses)
+    let houses = await Houses.find(ask).sort(price)
     res.render('houses/list', { user, houses })
-  } catch {
+  } catch (err) {
     next(err)
   }
 })
