@@ -8,12 +8,13 @@
               class="h4 pb-2 mb-4 text-danger border-bottom border-secondary"
             ></div>
           </div>
-          <form>
+          <form  action="/profile?_method=PATCH" method="POST">
             <small>Name</small>
             <input
               class="form-control mb-2"
               type="text"
               aria-label="default input example"
+							name="name"
             />
             <small>Email</small>
             <label
@@ -23,7 +24,7 @@
             <input type="email" class="form-control mb-2" />
             <small>Profile Picture</small>
             <img
-              src="https://randomuser.me/api/portraits/men/11.jpg"
+              src="{{user.avatar}}"
               alt=""
               class="rounded-circle avatarlrg d-block mt-1 mb-2"
             />
@@ -31,6 +32,7 @@
               class="form-control mb-2"
               type="text"
               aria-label="default input example"
+							name="avatar"
             />
             <button class="btn btn-success">Save Changes</button>
           </form>

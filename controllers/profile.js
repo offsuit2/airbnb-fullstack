@@ -1,17 +1,51 @@
 const express = require('express')
 const router = express.Router()
+const Users = require('../models/users')
 
-router.get('/', (req, res) => {
-  if (req.isAuthenticated()) {
-  } else {
+router.get('/', async (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      //check if logged in
+      let user = await Users.findOne({
+        email: req.body.email,
+        password: req.body.password
+      })
+    } else {
+      res.redirct('/auth/login')
+    }
+  } catch (e) {
+    next(e)
   }
-  res.render('profile', { user })
+  res.render('profile', { user: req.user })
 })
-
-router.patch('/', (req, res) => {
-  if (req.isAuthenticated()) {
-  } else {
+// //patch
+router.patch('/', async (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      let user = await Users.findByIdAndUpdate(
+        '62cfcb4bac77d114df7bcbcc',
+        {
+          name: req.body.name,
+          email: req.body.email,
+          avatar: req.body.avatar
+        },
+        {
+          new: true
+        }
+      )
+      req.login(user, err => {
+        if (err) {
+          throw err
+        }
+        res.redirect('/profile')
+      })
+      console.log(req.user.name)
+    } else {
+      // res.redirct('/auth/login')
+    }
+  } catch (err) {
+    next(err)
   }
-  res.send('hello')
+  res.render('profile', { user: req.user })
 })
 module.exports = router
