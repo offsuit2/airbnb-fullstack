@@ -16,7 +16,6 @@ router.get('/', async (req, res, next) => {
     }
     //rooms
     if (req.query.rooms == 0) {
-      console.log('hello')
     } else if (req.query.rooms != undefined && req.query.rooms != '') {
       ask.rooms = req.query.rooms
     }

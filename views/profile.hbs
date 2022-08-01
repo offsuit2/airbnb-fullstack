@@ -53,20 +53,22 @@
 
           <!-- profiler avalible houses listed -->
           <div class="">
+						{{#each houses as |house|}}
             <div class="row row-cols-1">
               <div class="col p-2">
                 <div class="card">
-                  <div class="card-body">
+										<div class="card-body">
+											<!-- one card -->
                     <div class="row row-cols-2">
                       <div class="col-4">
                         <img
                           class="img-fluid"
-                          src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+                          src=""
                           alt="listing photo 1"
                         />
                       </div>
                       <div class="col-8">
-                        <h1>Luxury Villa in Chaweng</h1>
+                        <h1>{{house.title}}</h1>
                         <span
                           ><i class="fa-solid fa-map-location"></i> Koh Samui
                           <i class="fa-regular fa-circle-dot"></i> 4 Rooms</span
@@ -74,26 +76,19 @@
                         <div class="row">
                           <div class="col-1 text-end">
                             <img
-                              src="https://randomuser.me/api/portraits/men/11.jpg"
+                              src="{{host.user.avatar}}"
                               class="rounded-circle avatar"
-                              alt="host"
+                              alt=""
                             />
                           </div>
                           <div class="col-11">
-                            <small>Hosted by Douglas</small>
+                            <small>Hosted by {{user.name}}</small>
                           </div>
                         </div>
                         <p>
                           Stylish, tropical, luxurious, airy and absolute
                           stunning view over the bay of Chaweng Beach, this
-                          villa combines form and function, enjoying
-                          magnificient views of Samui's small islands and the
-                          sea beyond. With 520sqm of indoor/outdoorliving space
-                          with 7 ensuite bedrooms, large living area, infinity
-                          pool, garden, air conditioned gym, professional pool
-                          table, BBQ and Sala, this villa is perfect for up to
-                          14 adults with 260sqm (2798sqfeet) of living space and
-                          260sqm of outdoor space.
+                          villa combines form and function
                         </p>
                         <div class="col">
                           <button
@@ -111,66 +106,8 @@
                   </div>
                 </div>
               </div>
-              <div class="col p-2">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row row-cols-2">
-                      <div class="col-4">
-                        <img
-                          class="img-fluid"
-                          src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png
-"
-                          alt="listing photo 1"
-                        />
-                      </div>
-                      <div class="col-8">
-                        <h1>Luxury Villa in Chaweng</h1>
-                        <span
-                          ><i class="fa-solid fa-map-location"></i> Koh Samui
-                          <i class="fa-regular fa-circle-dot"></i> 4 Rooms</span
-                        >
-                        <div class="row">
-                          <div class="col-1 text-end">
-                            <img
-                              src="https://randomuser.me/api/portraits/men/11.jpg"
-                              class="rounded-circle avatar"
-                              alt="host"
-                            />
-                          </div>
-                          <div class="col-11">
-                            <small>Hosted by Douglas</small>
-                          </div>
-                        </div>
-                        <p>
-                          Stylish, tropical, luxurious, airy and absolute
-                          stunning view over the bay of Chaweng Beach, this
-                          villa combines form and function, enjoying
-                          magnificient views of Samui's small islands and the
-                          sea beyond. With 520sqm of indoor/outdoorliving space
-                          with 7 ensuite bedrooms, large living area, infinity
-                          pool, garden, air conditioned gym, professional pool
-                          table, BBQ and Sala, this villa is perfect for up to
-                          14 adults with 260sqm (2798sqfeet) of living space and
-                          260sqm of outdoor space.
-                        </p>
-                        <div class="col">
-                          <button
-                            type="button"
-                            class="btn btn-outline-secondary"
-                          >
-                            Edit
-                          </button>
-                          <button type="button" class="btn btn-outline-success">
-                            View
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
+					{{/each}}
         </div>
       </div>
     </div>
