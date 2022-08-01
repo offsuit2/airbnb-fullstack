@@ -13,6 +13,7 @@ router.get('/', async (req, res, next) => {
     } else {
       res.redirct('/auth/login')
     }
+    //does user have houses
   } catch (e) {
     next(e)
   }
@@ -23,7 +24,7 @@ router.patch('/', async (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
       let user = await Users.findByIdAndUpdate(
-        '62cfcb4bac77d114df7bcbcc',
+        req.user._id,
         {
           name: req.body.name,
           email: req.body.email,

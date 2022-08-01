@@ -14,11 +14,13 @@ router.get('/', async (req, res, next) => {
     if (req.query.location != undefined && req.query.location != '') {
       ask.location = req.query.location
     }
-    console.log(req.query)
     //rooms
-    if (req.query.rooms != 0 && req.query.rooms != '') {
+    if (req.query.rooms == 0) {
+      console.log('hello')
+    } else if (req.query.rooms != undefined && req.query.rooms != '') {
       ask.rooms = req.query.rooms
     }
+    console.log()
     //price
     if (req.query.price != undefined && req.query.price != '') {
       ask.price = req.query.price
@@ -34,6 +36,7 @@ router.get('/', async (req, res, next) => {
     } else {
       price = '-price'
     }
+    console.log(req.query.rooms)
     //houses
     let houses = await Houses.find(ask).sort(price)
     res.render('houses/list', { user, houses })
@@ -93,7 +96,7 @@ router.patch('/:id', (req, res) => {
   } else {
     res.redirect('../auth/login')
   }
-  res.send('Hello')
+  res.render('/')
 })
 
 router.delete('/:id', (req, res) => {
