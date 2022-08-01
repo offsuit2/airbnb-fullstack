@@ -63,33 +63,29 @@
                       <div class="col-4">
                         <img
                           class="img-fluid"
-                          src=""
+                          src="{{house.photos.[0]}}"
                           alt="listing photo 1"
                         />
                       </div>
                       <div class="col-8">
                         <h1>{{house.title}}</h1>
                         <span
-                          ><i class="fa-solid fa-map-location"></i> Koh Samui
-                          <i class="fa-regular fa-circle-dot"></i> 4 Rooms</span
+                          ><i class="fa-solid fa-map-location"></i> {{house.location}}
+                          <i class="fa-regular fa-circle-dot"></i> {{house.rooms}} Rooms</span
                         >
                         <div class="row">
                           <div class="col-1 text-end">
                             <img
-                              src="{{host.user.avatar}}"
+                              src="{{house.host.avatar}}"
                               class="rounded-circle avatar"
-                              alt=""
+                              alt="host"
                             />
                           </div>
                           <div class="col-11">
-                            <small>Hosted by {{user.name}}</small>
+                            <small>Hosted by {{house.host.name}}</small>
                           </div>
                         </div>
-                        <p>
-                          Stylish, tropical, luxurious, airy and absolute
-                          stunning view over the bay of Chaweng Beach, this
-                          villa combines form and function
-                        </p>
+                        {{house.description}}
                         <div class="col">
                           <button
                             type="button"

@@ -7,11 +7,12 @@ router.get('/', async (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
       //check if logged in
-      //Houses
+      //Houses edit side
       let houses = await Houses.find({
         host: req.user._id
-      })
+      }).populate('host')
       console.log(houses)
+      //user edit side
       let user = await Users.findOne({
         email: req.body.email,
         password: req.body.password
