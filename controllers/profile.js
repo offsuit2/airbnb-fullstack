@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
       let houses = await Houses.find({
         host: req.user._id
       }).populate('host')
-      console.log(houses)
+
       //user edit side
       let user = await Users.findOne({
         email: req.body.email,
@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
       })
       res.render('profile', { houses, user: req.user })
     } else {
-      res.redirct('/auth/login')
+      res.redirect('/auth/login')
     }
     //does user have houses
   } catch (e) {

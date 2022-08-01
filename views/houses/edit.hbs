@@ -1,6 +1,6 @@
 <div class="container mt-4">
       <h1>Edit House</h1>
-      <form class="">
+      <form name="edit-house" action="/houses?_method=PATCH" method="POST" class="">
         <small>Short Title</small>
         <input class="form-control mb-2" type="text" />
         <small>Description</small>
@@ -13,7 +13,7 @@
         <small>Number of Rooms</small>
         <input type="number" class="form-control mb-2" />
         <small>Location</small>
-        <select type="number" class="form-select mb-2">
+        <select name="location" type="number" class="form-select mb-2">
           <option selected></option>
           <option value="1">Koh Phangan</option>
           <option value="2">Koh Samui</option>
@@ -22,15 +22,18 @@
           <option value="5">Las Vegas</option>
           <option value="6">Mexico City</option>
         </select>
+				<!-- price -->
         <small>Price(per night)</small>
         <div class="input-group mb-3">
           <span class="input-group-text">$</span>
           <input
+					name=""
             type="number"
             class="form-control"
             aria-label="Amount (to the nearest dollar)"
           />
         </div>
+				<!-- photos -->
         <small>Add Photos(up to 9)</small>
         <div class="mb-1">
           <input

@@ -87,15 +87,9 @@
                         </div>
                         {{house.description}}
                         <div class="col">
-                          <button
-                            type="button"
-                            class="btn btn-outline-secondary"
-                          >
-                            Edit
-                          </button>
-                          <button type="button" class="btn btn-outline-success">
-                            View
-                          </button>
+													<a href="/houses/{{house._id}}/edit"  class="btn btn-outline-secondary">Edit</a>
+
+                          <a href="/houses/{{house._id}}"  class="btn btn-outline-secondary">Veiw</a>
                         </div>
                       </div>
                     </div>

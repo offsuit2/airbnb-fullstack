@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Users = require('../models/users')
 const Houses = require('../models/houses')
-
+//house home page search filters
 router.get('/', async (req, res, next) => {
   try {
     //user
@@ -43,7 +43,7 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
-
+//create house
 router.get('/create', async (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
@@ -57,24 +57,30 @@ router.get('/create', async (req, res, next) => {
   }
 })
 
-router.get('/:id', async (req, res, next) => {
+// //single house
+// router.get('/:id', async (req, res, next) => {
+//   try {
+//     // find the house
+//     let house = await Houses.findOne({ _id: req.params.id })
+//     // put the house in the template and render it
+//     res.render('houses/one', { house, user: req.user })
+//   } catch (err) {
+//     throw err
+//   }
+// })
+//edit page
+router.get('/:id/edit', async (req, res, next) => {
   try {
-    // find the house
-    let house = await Houses.findOne({ _id: req.params.id })
-    // put the house in the template and render it
-    res.render('houses/one', { house, user: req.user })
-  } catch (err) {
-    throw err
+    if (req.isAuthenticated()) {
+      let user = req.user
+      res.render('houses/edit')
+      console.log('yolo')
+    } else {
+      res.redirect('/auth/login')
+    }
+  } catch (e) {
+    next(e)
   }
-})
-
-router.get('/:id/edit', (req, res) => {
-  let user = req.user
-  if (req.isAuthenticated()) {
-  } else {
-    res.redirect('../auth/login')
-  }
-  res.render('houses/edit', { user })
 })
 
 router.post('/', async (req, res, next) => {
@@ -90,12 +96,30 @@ router.post('/', async (req, res, next) => {
   // res.send('hello', { house })
 })
 
-router.patch('/:id', (req, res) => {
-  if (req.isAuthenticated()) {
-  } else {
-    res.redirect('../auth/login')
+router.patch('/:id', async (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      let houses = await Houses.findByIdAndUpdate(
+        req.house._id,
+        {
+          title: req.body.name,
+          description: req.boby.description,
+          rooms: req.body.rooms,
+          location: req.body.location,
+          price: req.body.price,
+          photos: req.body.photos
+        },
+        {
+          new: true
+        }
+      )
+    } else {
+      res.redirect('../auth/login')
+    }
+    res.render('houses/edit')
+  } catch (e) {
+    next(e)
   }
-  res.render('/')
 })
 
 router.delete('/:id', (req, res) => {
