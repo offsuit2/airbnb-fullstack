@@ -73,8 +73,9 @@ router.get('/:id/edit', async (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
       let user = req.user
-      res.render('houses/edit')
-      console.log('yolo')
+      let house = await Houses.findOne({ _id: req.params.id })
+      res.render('houses/edit', { house })
+      console.log()
     } else {
       res.redirect('/auth/login')
     }

@@ -32,7 +32,7 @@ router.post('/login', async (req, res, next) => {
     next(err)
   }
 })
-
+//post signup
 router.post('/signup', async (req, res, next) => {
   try {
     // look for user with that email
