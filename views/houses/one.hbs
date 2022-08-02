@@ -101,15 +101,28 @@
               <div class="card-body">
                 <h3 class="card-title mb-1">${{house.price}}</h3>
                 <small>0 Reveiws</small>
-                <form action="">
+
+								{{#if booking}}
+								<!-- Booking -->
+                <form action="/bookings" name="booking" method="POST">
+									<input type="hidden" name="house" value="{{house._id}}">
                   <textarea
                     placeholder="Send the host a massage..."
                     class="form-control mb-2 mt-3"
                     id="floatingTextarea2"
                     style="height: 150px"
+                    name="description"
                   ></textarea>
-                </form>
-                <a href="#" class="btn btn-success">Request Booking</a>
+									<!-- button -->
+									<button class="btn btn-success" >Request Booking</button>
+                </form>		
+								{{else}}
+								<!-- massege -->
+								<div class="alert alert-success" role="alert">
+									Thank you for your interest!
+								</div>
+								{{/if}}
+								<!--  -->
               </div>
             </div>
           </div>

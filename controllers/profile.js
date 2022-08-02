@@ -54,6 +54,6 @@ router.patch('/', async (req, res, next) => {
   } catch (err) {
     next(err)
   }
-  res.render('profile', { user: req.user, houses })
+  res.redirect('profile')
 })
 module.exports = router

@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const Users = require('../models/users')
 const Houses = require('../models/houses')
+const Bookings = require('../models/bookings')
+
 //house home page search filters
 router.get('/', async (req, res, next) => {
   try {
@@ -56,18 +58,20 @@ router.get('/create', async (req, res, next) => {
     next(err)
   }
 })
+//single house
+router.get('/:id', async (req, res, next) => {
+  try {
+    // find the house
+    let house = await Houses.findOne({ _id: req.params.id })
+    let booking = await Bookings.findOne({})
+    console.log(booking.author)
+    // put the house in the template and render it
+    res.render('houses/one', { booking, house, user: req.user })
+  } catch (err) {
+    throw err
+  }
+})
 
-// //single house
-// router.get('/:id', async (req, res, next) => {
-//   try {
-//     // find the house
-//     let house = await Houses.findOne({ _id: req.params.id })
-//     // put the house in the template and render it
-//     res.render('houses/one', { house, user: req.user })
-//   } catch (err) {
-//     throw err
-//   }
-// })
 //edit page
 router.get('/:id/edit', async (req, res, next) => {
   try {
@@ -94,17 +98,17 @@ router.post('/', async (req, res, next) => {
   } catch (err) {
     next(err)
   }
-  // res.send('hello', { house })
 })
 
 router.patch('/:id', async (req, res, next) => {
   try {
     if (req.isAuthenticated()) {
+      console.log(req.params.id)
       let houses = await Houses.findByIdAndUpdate(
-        req.house._id,
+        req.params.id,
         {
           title: req.body.name,
-          description: req.boby.description,
+          description: req.body.description,
           rooms: req.body.rooms,
           location: req.body.location,
           price: req.body.price,
@@ -114,10 +118,10 @@ router.patch('/:id', async (req, res, next) => {
           new: true
         }
       )
+      res.render('houses/edit', { houses })
     } else {
       res.redirect('../auth/login')
     }
-    res.render('houses/edit')
   } catch (e) {
     next(e)
   }
