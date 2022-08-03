@@ -70,28 +70,32 @@
                 </div>
                 <p>{{house.description}}</p>
               </div>
+							<!-- reviews -->
               <div class="col">
-                <h2>0 Reveiws</h2>
+                <h2>{{Reviews.length}} Reveiws</h2>
                 <small>Leave a reveiw</small>
-                <form>
+                <form name="reviews" action="/reviews" method="POST">
+									<input name="house" type="hidden" value="{{house._id}}">
                   <div class="form-floating mt-2">
                     <textarea
+                    	name="description"
                       class="form-control mb-2"
                       id="floatingTextarea2"
-                      style="height: 250px"
+                      style="height: 200px"
                     ></textarea>
-                    <button type="button" class="btn btn-outline-success">
+                    <!-- <button type="button" class="btn btn-outline-success">
                       <i class="fa-regular fa-thumbs-up"></i>
                     </button>
                     <button type="button" class="btn btn-outline-danger">
                       <i class="fa-regular fa-thumbs-down"></i>
-                    </button>
+                    </button> -->
                     <button class="btn btn-success d-block mt-2">
                       Submit
                     </button>
                   </div>
                 </form>
               </div>
+							<!--  -->
             </div>
           </div>
 
@@ -100,8 +104,8 @@
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title mb-1">${{house.price}}</h3>
-                <small>0 Reveiws</small>
-								
+                <small>{{reviews.length}} Reveiws</small>
+
 								{{#if booking}}
 								<!-- massege -->
 								<div class="alert alert-success" role="alert">

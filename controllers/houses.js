@@ -3,6 +3,7 @@ const router = express.Router()
 const Users = require('../models/users')
 const Houses = require('../models/houses')
 const Bookings = require('../models/bookings')
+const Reviews = require('../models/reviews')
 
 //house home page search filters
 router.get('/', async (req, res, next) => {
@@ -63,14 +64,20 @@ router.get('/:id', async (req, res, next) => {
   try {
     // find the house
     let house = await Houses.findOne({ _id: req.params.id })
-    let booking = await Bookings.findOne({
-      house: house.id
+    //reveiws
+    let review = await Reviews.findOne({
+      house: req.params._id
     })
-    // console.log(booking)
+    //Bookings
+    let booking = await Bookings.findOne({
+      house: house.id,
+      author: req.user._id
+    })
+    console.log(req.body)
     if (booking) {
-      res.render('houses/one', { booking, house, user: req.user })
+      res.render('houses/one', { review, booking, house, user: req.user })
     } else {
-      res.render('houses/one', { house, user: req.user })
+      res.render('houses/one', { review, house, user: req.user })
     }
   } catch (err) {
     throw err
@@ -95,11 +102,15 @@ router.get('/:id/edit', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    // host
-    req.body.host = req.user._id
-    let house = await Houses.create(req.body)
-    res.redirect('/houses/' + house._id)
-    //redirct to /:id with obj:id
+    if (req.isAuthenticated()) {
+      // host
+      req.body.host = req.user._id
+      let house = await Houses.create(req.body)
+      res.redirect('/houses/' + house._id)
+      //redirct to /:id with obj:id
+    } else {
+      res.redirect('/auth/login')
+    }
   } catch (err) {
     next(err)
   }
