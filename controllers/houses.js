@@ -63,10 +63,15 @@ router.get('/:id', async (req, res, next) => {
   try {
     // find the house
     let house = await Houses.findOne({ _id: req.params.id })
-    let booking = await Bookings.findOne({})
-    console.log(booking.author)
-    // put the house in the template and render it
-    res.render('houses/one', { booking, house, user: req.user })
+    let booking = await Bookings.findOne({
+      house: house.id
+    })
+    // console.log(booking)
+    if (booking) {
+      res.render('houses/one', { booking, house, user: req.user })
+    } else {
+      res.render('houses/one', { house, user: req.user })
+    }
   } catch (err) {
     throw err
   }
